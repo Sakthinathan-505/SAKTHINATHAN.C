@@ -1,0 +1,243 @@
+{
+ "cells": [
+  {
+   "cell_type": "code",
+   "execution_count": 13,
+   "id": "ff362790",
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "Empty DataFrame\n",
+      "Columns: []\n",
+      "Index: []\n"
+     ]
+    }
+   ],
+   "source": [
+    "import pandas as pd\n",
+    "df=pd.DataFrame()\n",
+    "print(df)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 14,
+   "id": "b39a9a98",
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "\n",
+      "series to DataFrame\n",
+      "\n",
+      "         Emp  ID\n",
+      "0    dharsan  80\n",
+      "1     sudeep  90\n",
+      "2       siva  28\n",
+      "3       yash  57\n",
+      "4  keerthana  49\n"
+     ]
+    }
+   ],
+   "source": [
+    "emp=pd.Series(['dharsan','sudeep','siva','yash','keerthana'])\n",
+    "id=pd.Series([80,90,28,57,49])\n",
+    "Frame={'Emp':emp,'ID':id}\n",
+    "result=pd.DataFrame(Frame)\n",
+    "print(\"\\nseries to DataFrame\\n\")\n",
+    "print(result)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 15,
+   "id": "b936cce4",
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "\n",
+      " Extracting one column\n",
+      "\n",
+      "0      dharsan\n",
+      "1       sudeep\n",
+      "2         siva\n",
+      "3         yash\n",
+      "4    keerthana\n",
+      "Name: Emp, dtype: object\n"
+     ]
+    }
+   ],
+   "source": [
+    "print(\"\\n Extracting one column\\n\")\n",
+    "print(result['Emp'])"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 16,
+   "id": "341719a4",
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "\n",
+      " Adding new column\n",
+      "         Emp  ID  Age\n",
+      "0    dharsan  80   19\n",
+      "1     sudeep  90   90\n",
+      "2       siva  28   34\n",
+      "3       yash  56   67\n",
+      "4  keerthana  89   20\n"
+     ]
+    }
+   ],
+   "source": [
+    "print(\"\\n Adding new column\")\n",
+    "result['ID']=pd.Series([80,90,28,56,89])\n",
+    "result['Age']=pd.Series([19,90,34,67,20])\n",
+    "print(result)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 17,
+   "id": "1374a872",
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "\n",
+      " deleting new column:\n",
+      "\n",
+      "         Emp  ID\n",
+      "0    dharsan  80\n",
+      "1     sudeep  90\n",
+      "2       siva  28\n",
+      "3       yash  56\n",
+      "4  keerthana  89\n"
+     ]
+    }
+   ],
+   "source": [
+    "print(\"\\n deleting new column:\\n\")\n",
+    "del result['Age']\n",
+    "print(result)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 18,
+   "id": "ad3bc1cf",
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "\n",
+      " Extracting the second row:\n",
+      "\n",
+      "Emp    sudeep\n",
+      "ID         90\n",
+      "Name: 1, dtype: object\n"
+     ]
+    }
+   ],
+   "source": [
+    "print(\"\\n Extracting the second row:\\n\")\n",
+    "print(result.loc[1])"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 19,
+   "id": "d9eb38a7",
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "slice rows:\n",
+      "       Emp  ID\n",
+      "1  sudeep  90\n",
+      "2    siva  28\n",
+      "3    yash  56\n"
+     ]
+    }
+   ],
+   "source": [
+    "print(\"slice rows:\\n\",result[1:4])"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 21,
+   "id": "8e7ce185",
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "\n",
+      " Addind new row values:\n",
+      "          Emp   ID\n",
+      "0    dharsan   80\n",
+      "1     sudeep   90\n",
+      "2       siva   28\n",
+      "3       yash   56\n",
+      "4  keerthana   89\n",
+      "0      vicky  100\n",
+      "1     Rashid  111\n"
+     ]
+    }
+   ],
+   "source": [
+    "d2=pd.DataFrame([['vicky',100],['Rashid',111]],columns=['Emp','ID'])\n",
+    "print(\"\\n Addind new row values:\\n\",pd.concat([result,d2]))"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "id": "46dbc146",
+   "metadata": {},
+   "outputs": [],
+   "source": []
+  }
+ ],
+ "metadata": {
+  "kernelspec": {
+   "display_name": "Python 3 (ipykernel)",
+   "language": "python",
+   "name": "python3"
+  },
+  "language_info": {
+   "codemirror_mode": {
+    "name": "ipython",
+    "version": 3
+   },
+   "file_extension": ".py",
+   "mimetype": "text/x-python",
+   "name": "python",
+   "nbconvert_exporter": "python",
+   "pygments_lexer": "ipython3",
+   "version": "3.11.5"
+  }
+ },
+ "nbformat": 4,
+ "nbformat_minor": 5
+}
